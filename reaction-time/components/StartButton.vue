@@ -23,8 +23,8 @@ export default {
 <style scoped>
 button {
   position: relative;
-  left: 990px;
-  bottom: 130px;
+  left: 1338px;
+  bottom: 90px;
   font-size: 16px;
   color: white;
   background-color: rgb(134, 134, 134);
