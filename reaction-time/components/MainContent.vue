@@ -1,8 +1,8 @@
 <template>
   <div>
-    <ClickMeBox />
+    <ClickMeBox :show-click-me="showClickMe"/>
     <NameInput />
-    <StartButton />
+    <StartButton @click="startGame"/>
     <History />
   </div>
 </template>
@@ -13,12 +13,23 @@ import NameInput from '../components/NameInput.vue'
 import StartButton from '../components/StartButton.vue'
 import History from '../components/History.vue'
 export default {
+  data() {
+    return {
+      showClickMe: false
+    }
+  },
   components: {
     ClickMeBox,
     NameInput,
     StartButton,
     History,
   },
+  methods: {
+    startGame(value) {
+      this.showClickMe = value
+      console.log(this.showClickMe)
+    }
+  }
 }
 </script>
 

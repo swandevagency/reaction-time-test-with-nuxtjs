@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="clicked">Click Me!</button>
+    <button id="test">Click Me!</button>
   </div>
 </template>
 
@@ -9,18 +9,19 @@ export default {
   props: {
     clientWidth: Number,
     clientHeight: Number,
+    showClickMe: Boolean
+  },
+  mounted() {
+      document.getElementById('test').style.top =
+        this.getRandomNumber(0, this.clientHeight - 50) + 'px'
+      document.getElementById('test').style.left =
+        this.getRandomNumber(0, this.clientWidth - 200) + 'px'
   },
   methods: {
-    clicked(e) {
-      e.target.style.top =
-        this.getRandomNumber(0, this.clientHeight - 50) + 'px'
-      e.target.style.left =
-        this.getRandomNumber(0, this.clientWidth - 200) + 'px'
-    },
     getRandomNumber(min, max) {
       return Math.random() * (max - min) + min
-    },
-  },
+    }
+  }
 }
 </script>
 

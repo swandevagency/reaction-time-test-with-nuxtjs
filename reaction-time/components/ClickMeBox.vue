@@ -1,6 +1,6 @@
 <template>
   <div id="box">
-    <ClickMeButton :client-width="clientWidth" :client-height="clientHeight"/>
+    <ClickMeButton v-if="showClickMe" :client-width="clientWidth" :client-height="clientHeight" :show-click-me="showClickMe"/>
   </div>
 </template>
 
@@ -13,12 +13,16 @@ export default {
       clientHeight: 0
     }
   },
+  props: {
+    showClickMe: Boolean
+  },
+  methods: {
+    
+  },
   mounted () {
     const box = document.getElementById('box');
     this.clientWidth = box.clientWidth
     this.clientHeight = box.clientHeight
-    console.log(this.clientWidth)
-    console.log(this.clientHeight)
   },
   components: {
     ClickMeButton,
