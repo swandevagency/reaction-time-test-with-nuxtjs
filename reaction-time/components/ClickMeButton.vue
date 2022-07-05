@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button id="test">Click Me!</button>
+    <button id="clickMe">Click Me!</button>
   </div>
 </template>
 
@@ -9,24 +9,27 @@ export default {
   props: {
     clientWidth: Number,
     clientHeight: Number,
-    showClickMe: Boolean
+    showClickMe: Boolean,
   },
   mounted() {
-      document.getElementById('test').style.top =
-        this.getRandomNumber(0, this.clientHeight - 50) + 'px'
-      document.getElementById('test').style.left =
-        this.getRandomNumber(0, this.clientWidth - 160) + 'px'
+    let clickMe = document.getElementById('clickMe')
+    clickMe.style.top = this.getRandomNumber(0, this.clientHeight - 50) + 'px'
+    clickMe.style.left = this.getRandomNumber(0, this.clientWidth - 160) + 'px'
+    setTimeout(() => {
+      clickMe.style.visibility = 'visible'
+    }, Math.floor(Math.random() * 1500))
   },
   methods: {
     getRandomNumber(min, max) {
       return Math.random() * (max - min) + min
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
 button {
+  visibility: hidden;
   position: relative;
   color: white;
   padding: 13px 26px;
