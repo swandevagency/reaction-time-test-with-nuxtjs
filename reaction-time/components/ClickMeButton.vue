@@ -15,7 +15,7 @@ export default {
       document.getElementById('test').style.top =
         this.getRandomNumber(0, this.clientHeight - 50) + 'px'
       document.getElementById('test').style.left =
-        this.getRandomNumber(0, this.clientWidth - 200) + 'px'
+        this.getRandomNumber(0, this.clientWidth - 160) + 'px'
   },
   methods: {
     getRandomNumber(min, max) {

@@ -27,7 +27,6 @@ export default {
   methods: {
     startGame(value) {
       this.showClickMe = value
-      console.log(this.showClickMe)
     }
   }
 }
