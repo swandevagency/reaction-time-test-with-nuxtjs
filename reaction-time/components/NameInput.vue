@@ -5,29 +5,25 @@
       <input type="text" id="name" v-model="nameInput" />
       <button>Submit</button>
     </form>
-    <History />
   </div>
 </template>
 
 <script>
-import History from './History.vue'
 export default {
   data() {
     return {
       nameInput: '',
-      names: []
+      userName: '',
     }
-  },
-  components: {
-    History
   },
   methods: {
     submitName() {
-      this.names.push(this.nameInput)
-      console.log(this.names)
+      if (this.nameInput === '') return
+      this.userName = this.nameInput
       this.nameInput = ''
-    }
-  }
+      this.$emit('submit', this.userName)
+    },
+  },
 }
 </script>
 

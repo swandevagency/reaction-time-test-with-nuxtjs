@@ -8,7 +8,8 @@
 export default {
   data() {
     return {
-      showClickMe: false
+      showClickMe: false,
+      test: 0
     }
   },
   methods: {
@@ -24,7 +25,7 @@ export default {
 button {
   position: relative;
   left: 1338px;
-  bottom: 90px;
+  bottom: 100px;
   font-size: 16px;
   color: white;
   background-color: rgb(134, 134, 134);

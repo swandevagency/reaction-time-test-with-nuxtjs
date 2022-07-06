@@ -1,8 +1,11 @@
 <template>
   <div id="mainContent">
-    <ClickMeBox :show-click-me="showClickMe"/>
-    <NameInput />
-    <StartButton @click="startGame"/>
+    <!-- @user-arr="userArr" -->
+    <ClickMeBox :show-click-me="showClickMe" @click="clickMeClicked" :user-name="userName" @set-history="setHistory"/>
+    <NameInput
+      @submit="submitNameInput"
+    />
+    <StartButton v-if="showStart" @click="startGame" />
   </div>
 </template>
 
@@ -13,7 +16,11 @@ import StartButton from '../components/StartButton.vue'
 export default {
   data() {
     return {
-      showClickMe: false
+      showClickMe: false,
+      clickedInSec: [],
+      showStart: false,
+      showResult: false,
+      userName: ''
     }
   },
   components: {
@@ -24,8 +31,22 @@ export default {
   methods: {
     startGame(value) {
       this.showClickMe = value
+    },
+    clickMeClicked(value) {
+      this.clickedInSec = value
+      this.showClickMe = false
+      this.showResult = true
+      this.showStart = false
+    },
+    submitNameInput(value) {
+      this.userName = value
+      console.log(this.userName)
+      this.showStart = true
+    },
+    setHistory(value) {
+      this.showResult = value
     }
-  }
+  },
 }
 </script>
 
