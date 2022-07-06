@@ -1,11 +1,6 @@
 <template>
   <div>
-    <button
-      id="clickMe"
-      @click="clickMeClicked"
-    >
-      Click Me!
-    </button>
+    <button id="clickMe" @click="clickMeClicked">Click Me!</button>
   </div>
 </template>
 
@@ -14,13 +9,9 @@ export default {
   data() {
     return {
       showClickMeDelay: 0,
-      test: 0,
-      test2: true,
+      clickInSec: 0,
+      stopCounting: true,
     }
-  },
-  props: {
-    clientWidth: Number,
-    clientHeight: Number,
   },
   mounted() {
     let clickMe = document.getElementById('clickMe')
@@ -31,23 +22,25 @@ export default {
       clickMe.style.visibility = 'visible'
     }, this.showClickMeDelay)
     setInterval(() => {
-      if (this.test2) {
-        this.test += 0.1
-        console.log(this.test)
+      if (this.stopCounting) {
+        this.clickInSec += 0.1
       } else return
     }, 100)
+  },
+  props: {
+    clientWidth: Number,
+    clientHeight: Number,
   },
   methods: {
     getRandomNumber(min, max) {
       return Math.random() * (max - min) + min
     },
-    clickMeClicked(e) {
-      this.test2 = false
-      this.test -= this.showClickMeDelay / 1000
-      this.$emit('click', this.test)
-      this.test = 0
+    clickMeClicked() {
+      this.stopCounting = false
+      this.clickInSec -= this.showClickMeDelay / 1000
+      this.$emit('click', this.clickInSec)
+      this.clickInSec = 0
       this.showClickMeDelay = 0
-      // e.target.style.visibility = 'hidden'
     },
   },
 }

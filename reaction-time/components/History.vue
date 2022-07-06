@@ -6,15 +6,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      
-    }
-  },
   props: {
-    clickedInSec: Array,
     resultObject: Object,
-    showResult: Boolean,
   },
 }
 </script>

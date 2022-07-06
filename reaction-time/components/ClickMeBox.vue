@@ -8,10 +8,8 @@
     />
     <div id="history">
       <ul v-for="result in userArr" :key="result.id">
-      <History
-        :result-object="result"
-      />
-    </ul>
+        <History :result-object="result" />
+      </ul>
     </div>
   </div>
 </template>
@@ -26,21 +24,8 @@ export default {
       clientHeight: 0,
       id: 0,
       userArr: [],
-      setHistory: false
+      setHistory: false,
     }
-  },
-  props: {
-    showClickMe: Boolean,
-    userName: String
-  },
-  methods: {
-    clickMeClickedSec(value) {
-      this.userArr.push({id: this.id++, userName: this.userName, sec: value})
-      console.log(this.userArr);
-      this.$emit('setHistory', this.setHistory)
-      // this.$emit('userArr', this.userArr)
-      this.$emit('click', this.userArr)
-    },
   },
   mounted() {
     const box = document.getElementById('box')
@@ -49,7 +34,19 @@ export default {
   },
   components: {
     ClickMeButton,
-    History
+    History,
+  },
+  props: {
+    showClickMe: Boolean,
+    userName: String,
+  },
+  methods: {
+    clickMeClickedSec(value) {
+      this.userArr.push({ id: this.id++, userName: this.userName, sec: value })
+      console.log(this.userArr)
+      this.$emit('setHistory', this.setHistory)
+      this.$emit('click', this.userArr)
+    },
   },
 }
 </script>

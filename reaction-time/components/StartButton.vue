@@ -9,15 +9,14 @@ export default {
   data() {
     return {
       showClickMe: false,
-      test: 0
     }
   },
   methods: {
     startGame() {
       this.showClickMe = true
-      this.$emit('click',this.showClickMe)
-    }
-  }
+      this.$emit('click', this.showClickMe)
+    },
+  },
 }
 </script>
 

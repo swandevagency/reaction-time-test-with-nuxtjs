@@ -17,7 +17,6 @@ export default {
   data() {
     return {
       showClickMe: false,
-      clickedInSec: [],
       showStart: false,
       showResult: false,
       userName: ''
@@ -33,14 +32,12 @@ export default {
       this.showClickMe = value
     },
     clickMeClicked(value) {
-      this.clickedInSec = value
       this.showClickMe = false
       this.showResult = true
       this.showStart = false
     },
     submitNameInput(value) {
       this.userName = value
-      console.log(this.userName)
       this.showStart = true
     },
     setHistory(value) {
