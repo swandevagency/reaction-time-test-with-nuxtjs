@@ -28,6 +28,15 @@ export default {
     }
   },
   mounted() {
+    if (localStorage.results) {
+      const storedResult = JSON.parse(localStorage.getItem('results'))
+      for (let i = 0; i < storedResult.length; i++) {
+        this.userArr.push(storedResult[i])
+      }
+      if (storedResult[storedResult.length - 1].id !== 0) {
+        this.id = storedResult[storedResult.length - 1].id
+      }
+    }
     const box = document.getElementById('box')
     this.clientWidth = box.clientWidth
     this.clientHeight = box.clientHeight
@@ -43,9 +52,12 @@ export default {
   methods: {
     clickMeClickedSec(value) {
       this.userArr.push({ id: this.id++, userName: this.userName, sec: value })
-      console.log(this.userArr)
+      this.storeResult()
       this.$emit('setHistory', this.setHistory)
       this.$emit('click', this.userArr)
+    },
+    storeResult() {
+      localStorage.setItem('results', JSON.stringify(this.userArr))
     },
   },
 }

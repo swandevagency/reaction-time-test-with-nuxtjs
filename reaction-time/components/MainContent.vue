@@ -1,5 +1,5 @@
 <template>
-  <div id="mainContent">
+  <div class="main-content-component-wrapper" id="mainContent">
     <!-- @user-arr="userArr" -->
     <ClickMeBox :show-click-me="showClickMe" @click="clickMeClicked" :user-name="userName" @set-history="setHistory"/>
     <NameInput
